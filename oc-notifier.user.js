@@ -15,6 +15,7 @@
     'use strict';
 
     const OC_URL = "https://www.torn.com/factions.php?step=your#/tab=crimes";
+    const TEST_MODE = false;
 
     let API_KEY = localStorage.getItem('torn_api_key') || '';
     let shown = false;
@@ -114,7 +115,6 @@
             return;
         }
         
-        const TEST_MODE = false;
         if (TEST_MODE) {
             createModal('Join an OC!');
             shown = true;
