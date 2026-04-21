@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Torn OC Popup Notifier
 // @namespace    http://tampermonkey.net/
-// @version      1.1.8
+// @version      0.2.0
 // @description  Notifies when you are not in an OC, and lets you set difficulty alerts on the crimes page.
 // @author       DoktorSkills [2275097]
 // @match        https://www.torn.com/*
@@ -270,18 +270,12 @@
         log(`Active OCs: ${activeCrimes.length} of ${allCrimes.length} total`);
 
         // Am I already in any active OC?
-        let iAmInOC = false;
-        for (const crime of activeCrimes) {
-            for (const slot of (crime.slots || [])) {
+        const iAmInOC = activeCrimes.some(crime =>
+            (crime.slots || []).some(slot => {
                 const uid = slot.user?.id ?? slot.user?.player_id;
-                if (uid === myPlayerId) {
-                    log(`Already in OC "${crime.name}" (${crime.status}) as ${slot.position}.`);
-                    iAmInOC = true;
-                    break;
-                }
-            }
-            if (iAmInOC) break;
-        }
+                return uid === myPlayerId;
+            })
+        );
 
         // Generic "join an OC" popup
         if (!iAmInOC && !shownNoOC && !onCrimesPage && alertDiff === null) {
