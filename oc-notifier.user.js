@@ -6,7 +6,7 @@
 // @author       DoktorSkills [2275097]
 // @match        https://www.torn.com/*
 // @grant        GM_xmlhttpRequest
-// @licence      MIT
+// @license      MIT
 // @updateURL    https://raw.githubusercontent.com/Doktorskills/torn-userscripts/main/oc-notifier.user.js
 // @downloadURL  https://raw.githubusercontent.com/Doktorskills/torn-userscripts/main/oc-notifier.user.js
 // ==/UserScript==
